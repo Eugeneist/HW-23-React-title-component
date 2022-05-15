@@ -1,6 +1,6 @@
-// Style solution:
+import PropTypes from 'prop-types';
 
-const Title = ({ name, type = "normal" }) => {
+const Title = ({ name, type }) => {
 
     return (
         <h2 style = {{ fontWeight: type }}>
@@ -9,17 +9,16 @@ const Title = ({ name, type = "normal" }) => {
     );
 }
 
+Title.propTypes = {
+    name: PropTypes.string.isRequired,
+    type: PropTypes.oneOf([
+        "bold",
+        "normal"
+    ])
+}
 
-// Class solution:
-
-// const Title = ({ name, type = "normal" }) => {
-//     const className = type === "bold" ? "bold" : "normal";
-
-//     return (
-//         <h1 className={className}>
-//             Hello, {name}!
-//         </h1>
-//     );
-// }
+Title.defaultProps = {
+    type: "normal"
+};
 
 export default Title;
